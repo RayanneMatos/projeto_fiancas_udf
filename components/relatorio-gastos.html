@@ -1,0 +1,109 @@
+<section id="relatorio-gastos" class="mt-5">
+    <h2>Relatório de Gastos</h2>
+    <div id="resumoGastos" class="mb-4">
+        <h4>Total de Receitas: <span id="totalReceitas">R$ 0,00</span></h4>
+        <h4>Total de Despesas: <span id="totalDespesas">R$ 0,00</span></h4>
+        <h4>Saldo: <span id="saldoRelatorio">R$ 0,00</span></h4>
+    </div>
+    
+    <h4>Detalhes das Transações</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Descrição</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody id="tabelaTransacoes">
+            <!-- As transações serão inseridas aqui -->
+        </tbody>
+    </table>
+
+    <div id="feedbackRelatorio" class="alert alert-info" style="display:none;">
+        Nenhuma transação cadastrada.
+    </div>
+</section>
+
+<script>
+    // Função para atualizar o relatório de gastos
+    function atualizarRelatorio() {
+        var totalReceitas = receitas.reduce((total, receita) => total + receita.valor, 0);
+        var totalDespesas = despesas.reduce((total, despesa) => total + despesa.valor, 0);
+        var saldo = totalReceitas - totalDespesas;
+
+        // Atualiza os totais no resumo
+        document.getElementById('totalReceitas').innerText = `R$ ${totalReceitas.toFixed(2)}`;
+        document.getElementById('totalDespesas').innerText = `R$ ${totalDespesas.toFixed(2)}`;
+        document.getElementById('saldoRelatorio').innerText = `R$ ${saldo.toFixed(2)}`;
+
+        // Atualiza a tabela de transações
+        atualizarTabelaTransacoes();
+
+        // Exibir feedback se não houver transações
+        if (receitas.length === 0 && despesas.length === 0) {
+            document.getElementById('feedbackRelatorio').style.display = 'block';
+        } else {
+            document.getElementById('feedbackRelatorio').style.display = 'none';
+        }
+    }
+
+    // Função para atualizar a tabela de transações
+    function atualizarTabelaTransacoes() {
+        var tabelaTransacoes = document.getElementById('tabelaTransacoes');
+
+        // Limpar tabela antes de atualizar
+        tabelaTransacoes.innerHTML = '';
+
+        // Adicionar receitas à tabela
+        receitas.forEach(receita => {
+            var tr = document.createElement('tr');
+            tr.innerHTML = `<td>Receita</td><td>${receita.descricao}</td><td>R$ ${receita.valor.toFixed(2)}</td>`;
+            tabelaTransacoes.appendChild(tr);
+        });
+
+        // Adicionar despesas à tabela
+        despesas.forEach(despesa => {
+            var tr = document.createElement('tr');
+            tr.innerHTML = `<td>Despesa</td><td>${despesa.descricao}</td><td>R$ ${despesa.valor.toFixed(2)}</td>`;
+            tabelaTransacoes.appendChild(tr);
+        });
+    }
+
+    // Atualizar o relatório sempre que uma nova receita ou despesa for cadastrada
+    function cadastrarReceita() {
+        var descricao = document.getElementById('descricaoReceita').value;
+        var valor = parseFloat(document.getElementById('valorReceita').value);
+
+        if (descricao === "" || isNaN(valor) || valor <= 0) {
+            alert("Por favor, preencha todos os campos corretamente.");
+            return;
+        }
+
+        // Adicionar receita ao array
+        receitas.push({ descricao: descricao, valor: valor });
+        atualizarSaldo();
+        atualizarRelatorio();
+
+        // Limpar campos
+        document.getElementById('formReceita').reset();
+    }
+
+    function cadastrarDespesa() {
+        var descricao = document.getElementById('descricaoDespesa').value;
+        var valor = parseFloat(document.getElementById('valorDespesa').value);
+
+        if (descricao === "" || isNaN(valor) || valor <= 0) {
+            alert("Por favor, preencha todos os campos corretamente.");
+            return;
+        }
+
+        // Adicionar despesa ao array
+        despesas.push({ descricao: descricao, valor: valor });
+        atualizarSaldo();
+        atualizarRelatorio();
+
+        // Limpar campos
+        document.getElementById('formDespesa').reset();
+    }
+</script>

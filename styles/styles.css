@@ -1,0 +1,113 @@
+/* styles/style.css */
+
+/* Menu de Navegação */
+.navbar {
+    background-color: #f8f9fa; /* Cor de fundo leve */
+    padding: 10px 20px; /* Adiciona um espaçamento interno */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve */
+}
+
+.navbar-brand {
+    font-weight: bold; /* Logo mais destacado */
+    font-size: 1.5rem; /* Aumenta o tamanho da fonte */
+    color: #343a40; /* Cor do texto da marca */
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: #007bff; /* Cor dos links */
+    padding: 10px 15px; /* Adiciona um espaçamento interno nos links */
+    transition: color 0.2s; /* Adiciona uma transição suave na cor */
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #0056b3; /* Cor ao passar o mouse */
+    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+}
+
+.navbar-toggler {
+    border-color: #007bff; /* Cor da borda do botão ao minimizar */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='%23007bff' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); /* Cor do ícone do botão */
+}
+
+/* Estilos para o corpo */
+body {
+    padding-top: 70px; /* Espaçamento para não sobrepor o menu */
+}
+
+/* Container principal */
+.container {
+    max-width: 800px; /* Define uma largura máxima para o conteúdo */
+    margin: 0 auto; /* Centraliza o container */
+}
+
+/* Estilos para seções */
+section {
+    background-color: #ffffff; /* Cor de fundo branca */
+    border-radius: 5px; /* Bordas arredondadas */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    padding: 20px; /* Espaçamento interno */
+    margin-bottom: 20px; /* Margem abaixo das seções */
+}
+
+/* Estilos para títulos de seções */
+h2 {
+    color: #343a40; /* Cor dos títulos */
+    margin-bottom: 15px; /* Margem abaixo do título */
+}
+
+/* Estilos para formulários */
+.form-group {
+    margin-bottom: 15px; /* Margem abaixo dos grupos de formulário */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Cor de fundo do botão */
+    border: none; /* Remove borda */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Cor do botão ao passar o mouse */
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Cor de fundo do botão de perigo */
+    border: none; /* Remove borda */
+}
+
+.btn-danger:hover {
+    background-color: #c82333; /* Cor do botão de perigo ao passar o mouse */
+}
+
+/* Estilos para tabelas */
+.table {
+    width: 100%; /* Largura total da tabela */
+    margin: 20px 0; /* Margem acima e abaixo da tabela */
+}
+
+.table th, .table td {
+    padding: 12px; /* Espaçamento interno nas células */
+    text-align: left; /* Alinhamento do texto à esquerda */
+    border-bottom: 1px solid #dee2e6; /* Borda inferior leve */
+}
+
+.table th {
+    background-color: #f1f1f1; /* Cor de fundo dos cabeçalhos */
+    font-weight: bold; /* Negrito nos cabeçalhos */
+}
+
+/* Estilos para acompanhar saldo */
+#saldo {
+    font-size: 1.2rem; /* Tamanho da fonte do saldo */
+    font-weight: bold; /* Negrito no saldo */
+    color: #28a745; /* Cor verde para saldo positivo */
+}
+
+/* Estilos para relatório de gastos */
+#relatorio {
+    margin-top: 15px; /* Margem acima do relatório */
+    font-size: 1rem; /* Tamanho da fonte do relatório */
+    color: #343a40; /* Cor do texto do relatório */
+}

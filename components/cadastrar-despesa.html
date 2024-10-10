@@ -1,0 +1,60 @@
+<section id="cadastrar-despesa" class="mt-5">
+    <h2>Cadastrar Despesa</h2>
+    <form id="formDespesa">
+        <div class="form-group">
+            <label for="descricaoDespesa">Descrição</label>
+            <input type="text" class="form-control" id="descricaoDespesa" placeholder="Descrição da Despesa" required>
+        </div>
+        <div class="form-group">
+            <label for="valorDespesa">Valor</label>
+            <input type="number" class="form-control" id="valorDespesa" placeholder="Valor da Despesa" required>
+        </div>
+        <div class="form-group">
+            <label for="dataDespesa">Data</label>
+            <input type="date" class="form-control" id="dataDespesa" required>
+        </div>
+        <div class="form-group">
+            <label for="categoriaDespesa">Categoria</label>
+            <select class="form-control" id="categoriaDespesa" required>
+                <option value="">Selecione uma categoria</option>
+                <option value="Alimentação">Alimentação</option>
+                <option value="Transporte">Transporte</option>
+                <option value="Lazer">Lazer</option>
+                <option value="Saúde">Saúde</option>
+                <option value="Educação">Educação</option>
+                <option value="Outros">Outros</option>
+            </select>
+        </div>
+        <button type="button" class="btn btn-danger" onclick="cadastrarDespesa()">Cadastrar</button>
+    </form>
+
+    <!-- Feedback de sucesso -->
+    <div id="feedbackDespesa" class="alert alert-success mt-3" style="display:none;">
+        Despesa cadastrada com sucesso!
+    </div>
+</section>
+
+<script>
+    function cadastrarDespesa() {
+        // Pegando os valores dos campos
+        var descricao = document.getElementById('descricaoDespesa').value;
+        var valor = document.getElementById('valorDespesa').value;
+        var data = document.getElementById('dataDespesa').value;
+        var categoria = document.getElementById('categoriaDespesa').value;
+
+        // Validação básica
+        if (descricao === "" || valor === "" || data === "" || categoria === "") {
+            alert("Por favor, preencha todos os campos.");
+            return;
+        }
+
+        // Exibir mensagem de sucesso
+        document.getElementById('feedbackDespesa').style.display = 'block';
+
+        // Limpar formulário
+        document.getElementById('formDespesa').reset();
+
+        // Lógica para salvar os dados pode ser adicionada aqui
+        // (como salvar em um array, enviar para um banco de dados, etc.)
+    }
+</script>

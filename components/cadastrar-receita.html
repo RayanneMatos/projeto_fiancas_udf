@@ -1,0 +1,58 @@
+<section id="cadastrar-receita" class="mt-5">
+    <h2>Cadastrar Receita</h2>
+    <form id="formReceita">
+        <div class="form-group">
+            <label for="descricaoReceita">Descrição</label>
+            <input type="text" class="form-control" id="descricaoReceita" placeholder="Descrição da Receita" required>
+        </div>
+        <div class="form-group">
+            <label for="valorReceita">Valor</label>
+            <input type="number" class="form-control" id="valorReceita" placeholder="Valor da Receita" required>
+        </div>
+        <div class="form-group">
+            <label for="dataReceita">Data</label>
+            <input type="date" class="form-control" id="dataReceita" required>
+        </div>
+        <div class="form-group">
+            <label for="categoriaReceita">Categoria</label>
+            <select class="form-control" id="categoriaReceita" required>
+                <option value="">Selecione uma categoria</option>
+                <option value="Salário">Salário</option>
+                <option value="Freelance">Freelance</option>
+                <option value="Investimentos">Investimentos</option>
+                <option value="Outros">Outros</option>
+            </select>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="cadastrarReceita()">Cadastrar</button>
+    </form>
+
+    <!-- Feedback de sucesso -->
+    <div id="feedbackReceita" class="alert alert-success mt-3" style="display:none;">
+        Receita cadastrada com sucesso!
+    </div>
+</section>
+
+<script>
+    function cadastrarReceita() {
+        // Pegando os valores dos campos
+        var descricao = document.getElementById('descricaoReceita').value;
+        var valor = document.getElementById('valorReceita').value;
+        var data = document.getElementById('dataReceita').value;
+        var categoria = document.getElementById('categoriaReceita').value;
+
+        // Validação básica
+        if (descricao === "" || valor === "" || data === "" || categoria === "") {
+            alert("Por favor, preencha todos os campos.");
+            return;
+        }
+
+        // Exibir mensagem de sucesso
+        document.getElementById('feedbackReceita').style.display = 'block';
+
+        // Limpar formulário
+        document.getElementById('formReceita').reset();
+
+        // Lógica para salvar os dados pode ser adicionada aqui
+        // (como salvar em um array, enviar para um banco de dados, etc.)
+    }
+</script>
